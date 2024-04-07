@@ -1,13 +1,15 @@
 CREATE TABLE IF NOT EXISTS card (
-    card_number INT PRIMARY KEY,
+    card_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
-    expiration_date DATE NOT NULL,
-    cvc_code INT NOT NULL
+    card_number VARCHAR(256),
+    expiration_date VARCHAR(256) NOT NULL,
+    cvc_code VARCHAR(256) NOT NULL,
+    owner_name VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS orders(
     orders_id SERIAL PRIMARY KEY,
-    card_id INT NOT NULL references card(card_number),
+    card_id INT NOT NULL references card(card_id),
     user_id INT NOT NULL,
     order_date DATE NOT NULL,
     payment_method VARCHAR(2) NOT NULL,
