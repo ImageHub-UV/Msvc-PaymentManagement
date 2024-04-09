@@ -4,9 +4,9 @@ import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
-import java.time.LocalDateTime;
-
 public record Card(
+        @NotEmpty
+        Integer card_id,
         @NotEmpty
         @Size(min= 16, max = 16)
         String card_number,
@@ -14,10 +14,12 @@ public record Card(
         Integer user_id,
         @Future
         @NotEmpty
-        LocalDateTime expiration_date,
+        String expiration_date,
         @NotEmpty
         @Size(min= 3, max = 3)
-        String cvc
+        String cvc_code,
+        @NotEmpty
+        String owner_name
 ) {
-    public Card {}
+        public Card {}
 }
