@@ -1,0 +1,35 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches: [develop, main]
+
+jobs:
+  Run_Java_App:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update ubuntu
+        run: sudo apt update
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build with Maven
+        env:
+          DB_PAYMENT_MANAGEMENT_URL: ${{ secrets.DB_PAYMENT_MANAGEMENT_URL }}
+          DB_PAYMENT_MANAGEMENT_USERNAME: ${{ secrets.DB_PAYMENT_MANAGEMENT_USERNAME }}
+          DB_PAYMENT_MANAGEMENT_PASSWORD: ${{ secrets.DB_PAYMENT_MANAGEMENT_PASSWORD }}
+          ENCRYPTION_KEY: ${{ secrets.ENCRYPTION_KEY }}
+          ENCRYPTION_ALGORITHM: ${{ secrets.ENCRYPTION_ALGORITHM }}
+        run: mvn --batch-mode package
