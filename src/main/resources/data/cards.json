@@ -1,0 +1,23 @@
+[
+  {
+    "card_number": "1234567812345678",
+    "user_id": 1,
+    "expiration_date": "2025-12-31T23:59:59",
+    "cvc_code": "123",
+    "owner_name": "John Doe"
+  },
+  {
+    "card_number": "8765432187654321",
+    "user_id": 2,
+    "expiration_date": "2024-11-30T23:59:59",
+    "cvc_code": "456",
+    "owner_name": "Jane Doe"
+  },
+  {
+    "card_number": "1122334455667788",
+    "user_id": 3,
+    "expiration_date": "2027-10-31T23:59:59",
+    "cvc_code": "789",
+    "owner_name": "Bob Smith"
+  }
+]
