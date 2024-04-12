@@ -34,3 +34,4 @@ build/
 
 ### Custom ###
 config/application.properties
+secrets.properties
