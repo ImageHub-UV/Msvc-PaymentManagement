@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/card")
+@CrossOrigin
 public class CardController {
     private final CardRepository cardRepository;
 
