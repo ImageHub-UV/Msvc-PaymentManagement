@@ -18,7 +18,10 @@ public class CardController {
     }
 
     @GetMapping("")
-    List<Card> getAll(){
+    List<Card> getAll(@RequestParam(required = false) Integer user_id){
+        if(user_id != null){
+            return cardRepository.getByUserId(user_id);
+        }
         return cardRepository.getAll();
     }
 
