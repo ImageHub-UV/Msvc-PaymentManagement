@@ -8,12 +8,12 @@ CREATE TABLE IF NOT EXISTS card (
 );
 
 CREATE TABLE IF NOT EXISTS orders(
-    orders_id SERIAL PRIMARY KEY,
+    order_id SERIAL PRIMARY KEY,
     card_id INT NOT NULL references card(card_id),
     user_id INT NOT NULL,
     order_date DATE NOT NULL,
     payment_method VARCHAR(2) NOT NULL,
-    total_amount DECIMAL(10,2) NOT NULL
+    total_price DECIMAL(10,2) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS order_image(

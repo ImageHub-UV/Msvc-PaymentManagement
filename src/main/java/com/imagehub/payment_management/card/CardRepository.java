@@ -43,6 +43,17 @@ public class CardRepository {
                 .collect(Collectors.toList());
     }
 
+    public List<Card> getByUserId(Integer user_id) {
+        List<Card> cards = jdbcClient.sql("SELECT * FROM card WHERE user_id = :user_id")
+                .param("user_id", user_id)
+                .query(Card.class)
+                .list();
+
+        return cards.stream()
+                .map(this::decryptCardData)
+                .collect(Collectors.toList());
+    }
+
     public Optional<Card> getById(Integer id) {
         Optional<Card> card = jdbcClient.sql("SELECT * FROM card WHERE card_id = :id")
                 .param("id", id)
