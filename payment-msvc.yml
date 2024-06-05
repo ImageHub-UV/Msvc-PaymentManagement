@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: payment-msvc-pod
+  labels:
+    app: payment-msvc
+spec:
+  containers:
+  - name: payment-msvc-pod
+    image: seb0927/msvc-order
+    ports:
+      - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-msvc-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: payment-msvc
+
